@@ -13,4 +13,3 @@ then
 fi
 
 $(npm root -g)/pr-bumper/.travis/maybe-bump-version.sh
-

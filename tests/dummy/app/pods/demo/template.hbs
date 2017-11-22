@@ -1,13 +1,52 @@
 
-<div class="dummy-header">File input</div>
-<div class="dummy-padding">
-    <div class="dummy-input">
-      {{frost-file-picker
-      validate=(action "validateFile")
-      on-change=(action "fileChanged")}}
-      {{frost-file-picker
-      accept='.txt'
-      validate=(action "validateFile")}}
+<div class='dummy-body'>
+  <div class="section-title">Default</div>
+  <hr>
+  <div class='section'>
+    <div class='example'>
+      <div class='demo'>
+{{! BEGIN-SNIPPET simple}}
+        {{frost-file-picker
+          accept='.jpeg'
+          hook='my-file-picker'
+        }}
+        {{! END-SNIPPET}}
+      </div>
+      <div class='snippet'>
+        {{code-snippet name='simple.hbs'}}
+      </div>
     </div>
-
+  </div>
+  <div class="section-title">Events</div>
+  <hr>
+  <div class='section'>
+    <div class='example'>
+      <div class="title">validate</div>
+      <div class='demo'>
+        {{! BEGIN-SNIPPET validate}}
+        {{frost-file-picker
+          accept='.txt'
+          validate=(action "validateFile")
+        }}
+        {{! END-SNIPPET}}
+      </div>
+      <div class='snippet'>
+        {{code-snippet name='validate.hbs'}}
+      </div>
+    </div>
+    <div class='example'>
+      <div class="title">onChange</div>
+      <div class='demo'>
+        {{! BEGIN-SNIPPET change}}
+        {{frost-file-picker
+          accept='.jpeg'
+          onChange=(action "onChangeHandler")
+        }}
+        {{! END-SNIPPET}}
+      </div>
+      <div class='snippet'>
+        {{code-snippet name='change.hbs'}}
+      </div>
+    </div>
+  </div>
 </div>

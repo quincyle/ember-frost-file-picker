@@ -1,8 +1,16 @@
-<div class="overlay">
-  {{input type="file" accept=accept class="text frost-file-select"}}
-  {{input type="file" accept=accept class="button frost-file-select"}}
+<div class="file-select-overlay">
+  {{input type="file" accept=accept class="file-select-overlay-text frost-file-select"}}
 </div>
 <div class="background">
-  {{frost-text value=fileName readonly=true}}
-  {{#frost-button class="text small tertiary file"}}Browse...{{/frost-button}}
+  {{frost-text
+    hook=hook
+    isHookEmbedded=true
+    value=fileName
+    placeholder=placeholderText
+    readonly=true}}
+  {{frost-button
+    hook=(concat hook '-button')
+    size="small"
+    priority="tertiary"
+    text='Browse'}}
 </div>

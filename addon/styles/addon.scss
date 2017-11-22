@@ -1,58 +1,64 @@
-@import 'node_modules/ember-frost-theme/scss/frost-theme';
+@import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 
 .frost-file-picker {
+  display: flex;
   position: relative;
-  display: flex;
   flex-direction: row;
-}
 
-.frost-file-picker.full {
-  flex: 1;
-}
+  .file-select-overlay {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    width: calc(100% - 70px);
+    height: 31px;
+    opacity: 0;
 
-.frost-file-picker .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  opacity: 0;
-}
+    &-text {
+      display: block;
+      width: 100%;
+      padding: 33px 0 0;
+      cursor: text;
+    }
+  }
 
-.frost-file-picker .overlay .text {
-  display: block;
-  padding: 32px 0 0 0;
-  cursor: text;
-}
+  .background {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    height: 33px;
+    border: 1px solid $frost-color-grey-6;
 
-.frost-file-picker .overlay .button,
-.frost-file-picker .overlay .button input {
-  display: block;
-  padding: 32px 0 0 0;
-  cursor: pointer;
-}
+    .frost-text {
+      border-right: 1px solid $frost-color-grey-6;
 
-.frost-file-picker .background {
-  flex: 1;
-  display:flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
+      > input {
+        height: 31px;
+      }
+    }
+  }
 
-.frost-file-picker .frost-text,
-.frost-file-picker .overlay .text {
-  flex: 1;
-}
+  &.full {
+    flex: 1;
+  }
 
-.frost-file-picker .frost-text:read-only {
-  border-bottom: 1px solid $frost-color-grey-6;
-}
+  &.over {
+    .background {
+      border: 1px dashed $frost-color-blue-1;
 
-.frost-file-picker .frost-button.file,
-.frost-file-picker .overlay .button {
-  width: 120px;
-  border: none;
-  border-left: 1px solid $frost-color-grey-6;
-  border-bottom: 1px solid $frost-color-grey-6;
-}
+      .frost-text {
+        border-right: 1px dashed $frost-color-blue-1;
+      }
+    }
+  }
 
+  .frost-text {
+    width: 100%;
+  }
+
+  .frost-button {
+    &.file {
+      width: 70px;
+    }
+  }
+}

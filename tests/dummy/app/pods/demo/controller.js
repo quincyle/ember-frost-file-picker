@@ -1,24 +1,24 @@
 import Ember from 'ember'
+const {Controller, RSVP, inject} = Ember
+const {service} = inject
 
-export default Ember.Controller.extend({
+export default Controller.extend({
+  notifications: service('notification-messages'),
+
   selectedTab: 'readme',
 
   actions: {
     validateFile (file) {
-      return new Ember.RSVP.Promise((resolve) => {
+      return new RSVP.Promise((resolve) => {
         if (file != null) {
-          this.notifications.addNotification({
-            message: 'Selected file of type: ' + file.type,
-            type: 'success',
+          this.get('notifications').success('Selected file of type: ' + file.type, {
             autoClear: true,
             clearDuration: 2000
           })
           resolve({valid: true})
           return true
         } else {
-          this.notifications.addNotification({
-            message: 'No file selected',
-            type: 'error',
+          this.get('notifications').error('No file selected', {
             autoClear: true,
             clearDuration: 2000
           })
@@ -28,11 +28,9 @@ export default Ember.Controller.extend({
       })
     },
 
-    fileChanged (attrs) {
+    onChangeHandler (attrs) {
       var file = attrs.value
-      this.notifications.addNotification({
-        message: 'Changed filename: ' + file.name,
-        type: 'success',
+      this.get('notifications').success('Changed filename: ' + file.name, {
         autoClear: true,
         clearDuration: 2000
       })

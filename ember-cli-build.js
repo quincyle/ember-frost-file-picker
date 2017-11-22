@@ -1,23 +1,17 @@
-/* global require, module */
-var EmberApp = require('ember-cli/lib/broccoli/ember-addon')
+/* eslint-env node */
+const EmberAddon = require('ember-cli/lib/broccoli/ember-addon')
 
 module.exports = function (defaults) {
-  var app = new EmberApp(defaults, {
+  var app = new EmberAddon(defaults, {
     babel: {
       optional: ['es7.decorators']
     },
     'ember-cli-mocha': {
       useLintTree: false
     },
-    sassOptions: {
-      includePaths: [
-        'node_modules/ember-frost-css-core/scss',
-        'node_modules/ember-frost-theme/scss'
-      ]
-    }
+    snippetSearchPaths: ['tests/dummy']
   })
 
-  app.import('bower_components/sinonjs/sinon.js')
   app.import('bower_components/highlightjs/styles/github.css')
   /*
     This build file specifes the options for the dummy test app of this
